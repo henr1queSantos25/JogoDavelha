@@ -9,7 +9,7 @@ public class Frame extends JFrame {
     public Frame() {
         super();
         this.setVisible(true);
-        this.setSize(800, 600);
+        this.setSize(800, 800);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
