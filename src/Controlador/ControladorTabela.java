@@ -13,15 +13,7 @@ public class ControladorTabela implements ActionListener {
     PanelTabela panelTabela;
     Jogo jogador = new Jogo();
     int contadorRodadas = 0;
-    Random linhaAleatoria = new Random();
-    Random colunaAleatoria = new Random();
-    
-    int linhaIA;
-    int colunaIA;
-    
-     
-
-
+ 
     public ControladorTabela(PanelTabela panelTabela) {
         this.panelTabela = panelTabela;
         addEventos();
@@ -91,27 +83,8 @@ public class ControladorTabela implements ActionListener {
         } else if (e.getSource() == panelTabela.getBotao0x0()) {
         	
         	jogador.posicoes[0][0]= descobrirJogador(jogador.posicoes[0][0]);
-            metodoTotal(panelTabela.getBotao0x0());
+        	metodoTotal(panelTabela.getBotao0x0());
             
-            if(contadorRodadas == 1) {
-            	linhaIA = linhaAleatoria.nextInt(2);
-            	colunaIA = colunaAleatoria.nextInt(2);
-            	
-            	jogador.posicoes[linhaIA][colunaIA] = descobrirJogador(jogador.posicoes[linhaIA][colunaIA]);
-            	
-            	if(linhaIA == 0 && colunaIA == 0) {
-            		linhaIA = linhaAleatoria.nextInt(2);
-                	colunaIA = colunaAleatoria.nextInt(2);
-                	jogador.posicoes[linhaIA][colunaIA] = descobrirJogador(jogador.posicoes[linhaIA][colunaIA]);
-                	IA(linhaIA, colunaIA);
-            	}else {
-            		IA(linhaIA, colunaIA);
-            	}
-            	
-            }
-            
-            
-
         } else if (e.getSource() == panelTabela.getBotao0x1()) {
         	
         	jogador.posicoes[0][1]= descobrirJogador(jogador.posicoes[0][1]);
