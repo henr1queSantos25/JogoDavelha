@@ -79,6 +79,9 @@ public class ControladorTabela implements ActionListener {
             panelTabela.getJogarDeNovo().setVisible(false);
 
             panelTabela.getVezJogador().setText("Vez do Jogador 1(X)");
+            
+//          ########## ATIVAR A LABEL VEZ JOGADOR #########
+            panelTabela.getVezJogador().setVisible(true);
 
         } else if (e.getSource() == panelTabela.getBotao0x0()) {
         	
@@ -198,7 +201,8 @@ public class ControladorTabela implements ActionListener {
         } else {
             panelTabela.getResultado().setText("VELHA!");
         }
-
+        
+       
         panelTabela.getJogarDeNovo().setEnabled(true);
         panelTabela.getJogarDeNovo().setVisible(true);
 
@@ -233,6 +237,7 @@ public class ControladorTabela implements ActionListener {
         jogador.ganhou = verificarGanhador();
 
         if (jogador.ganhou != 0) {
+        	panelTabela.getVezJogador().setVisible(false);
             verificarResultado();
         }
 
