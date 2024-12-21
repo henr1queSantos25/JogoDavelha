@@ -1,5 +1,8 @@
 package Controlador;
 
+import Visual.Frame;
+import Visual.PanelInicial;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,13 +12,15 @@ import Modelos.Jogo;
 import Visual.PanelTabela;
 
 public class ControladorTabela implements ActionListener {
-
+	Frame frame;
     PanelTabela panelTabela;
-    Jogo jogador = new Jogo();
+    Jogo jogador;
     int contadorRodadas = 0;
  
-    public ControladorTabela(PanelTabela panelTabela) {
+    public ControladorTabela(PanelTabela panelTabela, Jogo jogador, Frame frame) {
+    	this.jogador = jogador;
         this.panelTabela = panelTabela;
+        this.frame = frame;
         addEventos();
     }
 
@@ -36,6 +41,14 @@ public class ControladorTabela implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == panelTabela.getJogarDeNovo()) {
+        	PanelInicial panelInicial = new PanelInicial();
+        	frame.setContentPane(panelInicial);
+			frame.repaint();
+			frame.validate();
+			ControladorPanelInicial controladorPanelInicial = new ControladorPanelInicial(panelInicial, frame);
+        	
+        	/*
+        	  
 
 //             ####### ZERAR MATRIZ #######
             for (int i = 0; i < jogador.posicoes.length; i++) {
@@ -82,6 +95,7 @@ public class ControladorTabela implements ActionListener {
             
 //          ########## ATIVAR A LABEL VEZ JOGADOR #########
             panelTabela.getVezJogador().setVisible(true);
+        	 */
 
         } else if (e.getSource() == panelTabela.getBotao0x0()) {
         	
@@ -195,9 +209,9 @@ public class ControladorTabela implements ActionListener {
 
     public void verificarResultado() {
         if (jogador.ganhou == 1) {
-            panelTabela.getResultado().setText("O Jogador 1 Ganhou!");
+            panelTabela.getResultado().setText(jogador.getNomeJogador1() + " Ganhou!");
         } else if (jogador.ganhou == 2) {
-            panelTabela.getResultado().setText("O Jogador 2 Ganhou!!");
+            panelTabela.getResultado().setText(jogador.getNomeJogador2() + " Ganhou!");
         } else {
             panelTabela.getResultado().setText("VELHA!");
         }
@@ -210,11 +224,11 @@ public class ControladorTabela implements ActionListener {
 
     public int descobrirJogador(int posicaoClick) {
         if (jogador.getVezJogador() == true) {
-            panelTabela.getVezJogador().setText("Vez do Jogador 2(O)");
+            panelTabela.getVezJogador().setText("Vez de " + jogador.getNomeJogador2());
             posicaoClick = 1;
         } else {
             posicaoClick = 2;
-            panelTabela.getVezJogador().setText("Vez do Jogador 1(X)");
+            panelTabela.getVezJogador().setText("Vez de " + jogador.getNomeJogador1());
 
         }
         return posicaoClick;

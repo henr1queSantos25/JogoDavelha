@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+
+import Modelos.Jogo;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout;
@@ -31,9 +34,11 @@ public class PanelTabela extends JPanel {
 
     JLabel resultado;
     JLabel vezJogador;
+    Jogo jogador;
 
     
-    public PanelTabela() {
+    public PanelTabela(Jogo jogador) {
+    	this.jogador = jogador;
         GroupLayout groupLayout = new GroupLayout(this);
         groupLayout.setHorizontalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -102,7 +107,7 @@ public class PanelTabela extends JPanel {
             vezJogador.setForeground(Color.BLACK);
             vezJogador.setHorizontalAlignment(SwingConstants.CENTER);
             vezJogador.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
-            vezJogador.setText("Vez do Jogador 1(X)");
+            vezJogador.setText("Vez de " + jogador.getNomeJogador1());
         }
         return vezJogador;
     }
