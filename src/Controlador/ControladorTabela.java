@@ -224,6 +224,16 @@ public class ControladorTabela implements ActionListener {
         
         panelTabela.getTrocarJogadores().setEnabled(true);
         panelTabela.getTrocarJogadores().setVisible(true);
+        
+        panelTabela.getBotao0x0().setEnabled(false);
+        panelTabela.getBotao0x1().setEnabled(false);
+        panelTabela.getBotao0x2().setEnabled(false);
+        panelTabela.getBotao1x0().setEnabled(false);
+        panelTabela.getBotao1x1().setEnabled(false);
+        panelTabela.getBotao1x2().setEnabled(false);
+        panelTabela.getBotao2x0().setEnabled(false);
+        panelTabela.getBotao2x1().setEnabled(false);
+        panelTabela.getBotao2x2().setEnabled(false);
 
     }
 
