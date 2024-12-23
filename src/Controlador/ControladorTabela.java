@@ -36,20 +36,13 @@ public class ControladorTabela implements ActionListener {
         panelTabela.getBotao2x2().addActionListener(this);
 
         panelTabela.getJogarDeNovo().addActionListener(this);
+        panelTabela.getTrocarJogadores().addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == panelTabela.getJogarDeNovo()) {
-        	PanelInicial panelInicial = new PanelInicial();
-        	frame.setContentPane(panelInicial);
-			frame.repaint();
-			frame.validate();
-			ControladorPanelInicial controladorPanelInicial = new ControladorPanelInicial(panelInicial, frame);
-        	
-        	/*
-        	  
-
+        
 //             ####### ZERAR MATRIZ #######
             for (int i = 0; i < jogador.posicoes.length; i++) {
                 for (int j = 0; j < jogador.posicoes.length; j++) {
@@ -90,12 +83,15 @@ public class ControladorTabela implements ActionListener {
 //          ####### APAGAR BOTAO JOGAR DE NOVO #######
             panelTabela.getJogarDeNovo().setEnabled(false);
             panelTabela.getJogarDeNovo().setVisible(false);
+            
+            panelTabela.getTrocarJogadores().setEnabled(false);
+            panelTabela.getTrocarJogadores().setVisible(false);
 
-            panelTabela.getVezJogador().setText("Vez do Jogador 1(X)");
+            panelTabela.getVezJogador().setText("Vez de " + jogador.getNomeJogador1());
             
 //          ########## ATIVAR A LABEL VEZ JOGADOR #########
             panelTabela.getVezJogador().setVisible(true);
-        	 */
+        	 
 
         } else if (e.getSource() == panelTabela.getBotao0x0()) {
         	
@@ -141,6 +137,12 @@ public class ControladorTabela implements ActionListener {
         	jogador.posicoes[2][2] = descobrirJogador(jogador.posicoes[2][2]);
         	metodoTotal(panelTabela.getBotao2x2());
 
+        } else if(e.getSource() == panelTabela.getTrocarJogadores()) {
+        	PanelInicial panelInicial = new PanelInicial();
+        	frame.setContentPane(panelInicial);
+			frame.repaint();
+			frame.validate();
+			ControladorPanelInicial controladorPanelInicial = new ControladorPanelInicial(panelInicial, frame);
         }
 
     }
@@ -219,6 +221,9 @@ public class ControladorTabela implements ActionListener {
        
         panelTabela.getJogarDeNovo().setEnabled(true);
         panelTabela.getJogarDeNovo().setVisible(true);
+        
+        panelTabela.getTrocarJogadores().setEnabled(true);
+        panelTabela.getTrocarJogadores().setVisible(true);
 
     }
 

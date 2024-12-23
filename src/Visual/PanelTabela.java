@@ -31,6 +31,7 @@ public class PanelTabela extends JPanel {
     JButton botao2x2;
 
     JButton jogarDeNovo;
+    JButton trocarJogadores;
 
     JLabel resultado;
     JLabel vezJogador;
@@ -44,9 +45,9 @@ public class PanelTabela extends JPanel {
         	groupLayout.createParallelGroup(Alignment.LEADING)
         		.addGroup(groupLayout.createSequentialGroup()
         			.addGap(154)
-        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
         				.addComponent(getVezJogador(), GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-        				.addComponent(getJogarDeNovo(), GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+        				.addComponent(getResultado(), GroupLayout.PREFERRED_SIZE, 483, GroupLayout.PREFERRED_SIZE)
         				.addGroup(groupLayout.createSequentialGroup()
         					.addComponent(getBotao0x0(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         					.addGap(32)
@@ -65,20 +66,22 @@ public class PanelTabela extends JPanel {
         					.addComponent(getBotao2x1(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         					.addGap(31)
         					.addComponent(getBotao2x2(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-        				.addComponent(getResultado(), GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE))
+        				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+        					.addComponent(getJogarDeNovo(), GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
+        					.addGap(55)
+        					.addComponent(getTrocarJogadores(), GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)))
         			.addGap(163))
         );
         groupLayout.setVerticalGroup(
         	groupLayout.createParallelGroup(Alignment.LEADING)
         		.addGroup(groupLayout.createSequentialGroup()
-        			.addGap(31)
+        			.addGap(33)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(getVezJogador(), GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
         				.addGroup(groupLayout.createSequentialGroup()
-        					.addGap(2)
-        					.addComponent(getVezJogador(), GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-        					.addGap(13))
-        				.addComponent(getJogarDeNovo(), GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-        			.addGap(32)
+        					.addGap(26)
+        					.addComponent(getResultado(), GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(45)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addComponent(getBotao0x0(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         				.addComponent(getBotao0x1(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
@@ -93,9 +96,11 @@ public class PanelTabela extends JPanel {
         				.addComponent(getBotao2x0(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         				.addComponent(getBotao2x1(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         				.addComponent(getBotao2x2(), GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-        			.addGap(44)
-        			.addComponent(getResultado(), GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-        			.addGap(59))
+        			.addGap(53)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(getJogarDeNovo(), GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getTrocarJogadores(), GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
+        			.addGap(64))
         );
         setLayout(groupLayout);
 
@@ -128,8 +133,8 @@ public class PanelTabela extends JPanel {
 
         if (jogarDeNovo == null) {
             jogarDeNovo = new JButton();
-            jogarDeNovo.setText("Jogar de Novo");
-            jogarDeNovo.setFont(new Font("Comic Sans MS", Font.PLAIN, 50));
+            jogarDeNovo.setText("Jogar novamente");
+            jogarDeNovo.setFont(new Font("Tahoma", Font.PLAIN, 20));
             jogarDeNovo.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                 }
@@ -139,6 +144,20 @@ public class PanelTabela extends JPanel {
             jogarDeNovo.setEnabled(false);
         }
         return jogarDeNovo;
+
+    }
+    
+    public JButton getTrocarJogadores() {
+
+        if (trocarJogadores == null) {
+        	trocarJogadores = new JButton();
+        	trocarJogadores.setText("Trocar jogadores");
+        	trocarJogadores.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        	trocarJogadores.setVisible(false);
+        	trocarJogadores.setForeground(new Color(9, 6, 6));
+        	trocarJogadores.setEnabled(false);
+        }
+        return trocarJogadores;
 
     }
 
