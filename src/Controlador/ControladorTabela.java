@@ -147,36 +147,11 @@ public class ControladorTabela implements ActionListener {
 
     }
     
-    public void IA(int linha, int coluna) {
-    	if(linha == 0 && coluna == 0) {
-    		metodoTotal(panelTabela.getBotao0x0());
-    	}else if(linha == 0 && coluna == 1) {
-    		metodoTotal(panelTabela.getBotao0x1());
-    	}else if(linha == 0 && coluna == 2) {
-    		metodoTotal(panelTabela.getBotao0x2());
-    	}else if(linha == 1 && coluna == 0) {
-    		metodoTotal(panelTabela.getBotao1x0());
-    	}else if(linha == 1 && coluna == 1) {
-    		metodoTotal(panelTabela.getBotao1x1());
-    	}else if(linha == 1 && coluna == 2) {
-    		metodoTotal(panelTabela.getBotao1x2());
-    	}else if(linha == 2 && coluna == 0) {
-    		metodoTotal(panelTabela.getBotao2x0());
-    	}else if(linha == 2 && coluna == 1) {
-    		metodoTotal(panelTabela.getBotao2x1());
-    	}else if(linha == 2 && coluna == 2) {
-    		metodoTotal(panelTabela.getBotao2x2());
-    	}
-    	
-    }
 
     public void trocaJogador() {
-
-        if (jogador.getVezJogador() == true) {
-            jogador.setVezJogador(false);
-        } else {
-            jogador.setVezJogador(true);
-        }
+  
+    	jogador.setVezJogador(!jogador.getVezJogador());
+    	
     }
 
     public int verificarGanhador() {
@@ -211,9 +186,9 @@ public class ControladorTabela implements ActionListener {
 
     public void verificarResultado() {
         if (jogador.ganhou == 1) {
-            panelTabela.getResultado().setText(jogador.getNomeJogador1() + " Ganhou!");
+            panelTabela.getResultado().setText(jogador.getNomeJogador1() + " ganhou!");
         } else if (jogador.ganhou == 2) {
-            panelTabela.getResultado().setText(jogador.getNomeJogador2() + " Ganhou!");
+            panelTabela.getResultado().setText(jogador.getNomeJogador2() + " ganhou!");
         } else {
             panelTabela.getResultado().setText("VELHA!");
         }
