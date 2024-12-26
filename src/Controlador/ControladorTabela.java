@@ -16,6 +16,8 @@ public class ControladorTabela implements ActionListener {
     PanelTabela panelTabela;
     Jogo jogador;
     int contadorRodadas = 0;
+    int placarX = 0;
+    int placarO = 0;
  
     public ControladorTabela(PanelTabela panelTabela, Jogo jogador, Frame frame) {
     	this.jogador = jogador;
@@ -187,8 +189,10 @@ public class ControladorTabela implements ActionListener {
     public void verificarResultado() {
         if (jogador.ganhou == 1) {
             panelTabela.getResultado().setText(jogador.getNomeJogador1() + " ganhou!");
+            panelTabela.getPlacarJogador1().setText(jogador.getNomeJogador1() + ": " + ++placarX);
         } else if (jogador.ganhou == 2) {
             panelTabela.getResultado().setText(jogador.getNomeJogador2() + " ganhou!");
+            panelTabela.getPlacarJogador2().setText(jogador.getNomeJogador2() + ": " + ++placarO);
         } else {
             panelTabela.getResultado().setText("VELHA!");
         }

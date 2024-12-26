@@ -35,6 +35,8 @@ public class PanelTabela extends JPanel {
 
     JLabel resultado;
     JLabel vezJogador;
+    JLabel placarJogador1;
+    JLabel placarJogador2;
     Jogo jogador;
 
     
@@ -61,14 +63,18 @@ public class PanelTabela extends JPanel {
         			.addGap(34)
         			.addComponent(getBotao0x2(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         			.addGap(180))
-        		.addGroup(groupLayout.createSequentialGroup()
+        		.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
         			.addGap(162)
         			.addComponent(getBotao1x0(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         			.addGap(34)
         			.addComponent(getBotao1x1(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         			.addGap(34)
         			.addComponent(getBotao1x2(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        			.addGap(180))
+        			.addGap(24)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(getPlacarJogador1(), GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getPlacarJogador2(), GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE))
+        			.addGap(10))
         		.addGroup(groupLayout.createSequentialGroup()
         			.addGap(162)
         			.addComponent(getBotao2x0(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
@@ -80,7 +86,7 @@ public class PanelTabela extends JPanel {
         		.addGroup(groupLayout.createSequentialGroup()
         			.addGap(162)
         			.addComponent(getJogarDeNovo(), GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-        			.addGap(76)
+        			.addGap(88)
         			.addComponent(getTrocarJogadores(), GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
         );
         groupLayout.setVerticalGroup(
@@ -89,23 +95,29 @@ public class PanelTabela extends JPanel {
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addGroup(groupLayout.createSequentialGroup()
         					.addGap(23)
-        					.addComponent(getResultado(), GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
-        				.addComponent(getVezJogador(), GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE))
+        					.addComponent(getResultado(), GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+        					.addGap(3))
+        				.addComponent(getVezJogador(), GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
         			.addGap(20)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(getBotao0x0(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        				.addComponent(getBotao0x1(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        				.addComponent(getBotao0x2(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+        				.addComponent(getBotao0x0(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getBotao0x1(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getBotao0x2(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
         			.addGap(28)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(getBotao1x0(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        				.addComponent(getBotao1x1(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        				.addComponent(getBotao1x2(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+        				.addComponent(getBotao1x0(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getBotao1x1(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getBotao1x2(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(25)
+        					.addComponent(getPlacarJogador1(), GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+        					.addGap(20)
+        					.addComponent(getPlacarJogador2(), GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)))
         			.addGap(33)
-        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(getBotao2x0(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        				.addComponent(getBotao2x1(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-        				.addComponent(getBotao2x2(), GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+        				.addComponent(getBotao2x0(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getBotao2x1(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(getBotao2x2(), GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
         			.addGap(43)
         			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         				.addComponent(getJogarDeNovo(), GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
@@ -138,6 +150,26 @@ public class PanelTabela extends JPanel {
         return resultado;
     }
 
+    
+    public JLabel getPlacarJogador1() {
+    	if(placarJogador1 == null) {
+    		placarJogador1 = new JLabel();
+    		placarJogador1.setFont(new Font("Comic Sans MS", Font.PLAIN, 19));
+    		placarJogador1.setVisible(true);
+    		placarJogador1.setText(jogador.getNomeJogador1() + ": 0");
+    	}
+    	return placarJogador1;
+    }
+    
+    public JLabel getPlacarJogador2() {
+    	if(placarJogador2 == null) {
+    		placarJogador2 = new JLabel();
+    		placarJogador2.setFont(new Font("Comic Sans MS", Font.PLAIN, 19));
+    		placarJogador2.setVisible(true);
+    		placarJogador2.setText(jogador.getNomeJogador2() + ": 0");
+    	}
+    	return placarJogador2;
+    }
 
     public JButton getJogarDeNovo() {
 
